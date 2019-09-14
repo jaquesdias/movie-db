@@ -14,19 +14,21 @@
       <nav class="navbar navbar-expand-lg">
         <%= link_to('Home', root_path, class: 'navbar-brand') %>
           <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <%= link_to('New movie', new_movies_path, class: 'nav-link') %>
-              </li>
-            </ul>
-            <span class="navbar-text">
-              <% if user_signed_in? %>
-                User: <%= current_user.name %>
-                <%= link_to "| Logout", destroy_user_session_path, method: :delete, class: 'nav-divnk'  %>
-              <% else %>
+            <% if user_signed_in? %>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <%= link_to('New movie', new_movies_path, class: 'nav-link') %>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                  User: <%= current_user.name %>
+                  <%= link_to "| Logout", destroy_user_session_path, method: :delete, class: 'nav-divnk'  %>
+              </span>
+            <% else %>
+              <span class="navbar-text">
                 <%= link_to "Login", '/users/sign_in', class: 'nav-divnk'  %>
-              <% end %>
-            </span>
+              </span>
+            <% end %>
           </div>
         </nav>
       <div id="notifications">
