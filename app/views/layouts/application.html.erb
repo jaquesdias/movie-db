@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <% if user_signed_in? %>
+        <nav class="navbar">
+          <div class="nav-item">
+            User: <%= current_user.name %>
+            <%= link_to "| Logout", destroy_user_session_path, method: :delete, :class => 'nav-divnk'  %>
+          </div>
+        </nav>
+      <% end %>
+      <div id="notifications">
+        <%= render "layouts/elements/flash_message" %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
