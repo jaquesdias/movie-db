@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root 'movies#index'
 
-  resource :movies
+  resources :movies
 end
