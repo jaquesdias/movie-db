@@ -1,0 +1,8 @@
+$("#notifications").html('<%= j render "layouts/elements/flash_message" %>');
+$("#movie_rating_<%= movie.id %>").html('<%= j render "rating_stars", movie: @movie %>');
+$('html, body').animate(
+  {
+    scrollTop: $("#notifications").offset().top
+  }, 100
+);
+$('.edit_movie').hide();
