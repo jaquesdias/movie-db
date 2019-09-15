@@ -40,6 +40,8 @@ gem 'kaminari'
 
 gem 'devise'
 
+gem "font-awesome-rails"
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
