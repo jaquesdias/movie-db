@@ -1,8 +1,8 @@
 $(function () {
-  $('.edit_movie').hide();
+  $('.rating_form').hide();
 
   $('.rate_movie').unbind().click(function(e){
     e.preventDefault();
-    $(this).next('.edit_movie').show();
+    $(this).next('.rating_form').show();
   });
 });
