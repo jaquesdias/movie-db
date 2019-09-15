@@ -78,13 +78,6 @@ RSpec.describe MoviesController, type: :controller do
     end
   end
 
-  # describe "POST #rate" do
-  #   it "returns http success" do
-  #     post :rate
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
   describe "DELETE #destroy" do
     it "removes the movie from table and redirect to index" do
       movie = create(:movie)
