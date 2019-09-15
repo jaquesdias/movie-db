@@ -48,6 +48,26 @@ class MoviesController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def rate
+    rating = Rating.find_or_initialize_by(
+      movie_id: params[:movie_id],
+      user_id: current_user.id,
+    )
+    rating.rating_value = movie_params[:ratings]
+
+    if rating.save
+      flash.now[:notice] = 'Movie rated with success'
+    else
+      flash.now[:error] = rating.errors.full_messages
+    end
+
+    @movie = rating.movie.reload
+
+    respond_to do |format|
+      format.js { render layout: false, locals: { movie: @movie } }
+    end
+  end
+
   private
 
   def set_movie_and_categories
@@ -64,6 +84,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :category_id, :rating)
+    params.require(:movie).permit(:title, :description, :category_id, :ratings)
   end
 end
