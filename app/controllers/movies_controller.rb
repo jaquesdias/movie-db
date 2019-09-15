@@ -14,27 +14,28 @@ class MoviesController < ApplicationController
 
   def new; end
 
+  def show; end
+
   def create
     movie = Movie.new(movie_params)
     movie.user = current_user
 
     if movie.save
       flash[:notice] = 'Movie created with success'
-      redirect_to action: 'index'
+      redirect_to action: :index
     else
       flash[:error] = movie.errors.full_messages
-      redirect_to action: 'new'
+      redirect_to action: :new
     end
-
   end
 
   def update
     if @movie.update(movie_params)
       flash[:notice] = 'Movie updated with success'
-      redirect_to action: 'index'
+      redirect_to action: :index
     else
       flash[:error] = @movie.errors.full_messages
-      redirect_to action: 'show'
+      redirect_to action: :show
     end
   end
 
@@ -45,7 +46,7 @@ class MoviesController < ApplicationController
       flash[:error] = @movie.errors.full_messages
     end
 
-    redirect_to action: 'index'
+    redirect_to action: :index
   end
 
   def rate
