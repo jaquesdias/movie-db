@@ -1,4 +1,4 @@
-Weekly calendar
+Movie DB
 ========
 
 See the demo at (https://tranquil-beach-80870.herokuapp.com/)
