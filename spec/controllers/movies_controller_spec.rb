@@ -87,4 +87,23 @@ RSpec.describe MoviesController, type: :controller do
     end
   end
 
+  describe "POST #rate" do
+    context "with correct params" do
+      it "return success message" do
+        movie = create(:movie, user_id: controller.current_user.id)
+        post :rate, params: { movie_id: movie.id, movie: { ratings: 1 } }, xhr: true
+
+        expect(request.flash[:notice]).to_not be_nil
+      end
+    end
+
+    context "with wrong rating range" do
+      it "return error message" do
+        movie = create(:movie, user_id: controller.current_user.id)
+        post :rate, params: { movie_id: movie.id, movie: { ratings: 8 } }, xhr: true
+
+        expect(request.flash[:error]).to_not be_nil
+      end
+    end
+  end
 end
